@@ -114,6 +114,7 @@ def nodejs_image(
         base = None,
         data = [],
         layers = [],
+        env = {},
         binary = None,
         launcher = None,
         launcher_args = None,
@@ -128,6 +129,7 @@ def nodejs_image(
     data: Runtime dependencies of the nodejs_image.
     layers: Augments "deps" with dependencies that should be put into
            their own layers.
+    env: Environment variables for the nodejs_image.
     binary: An alternative binary target to use instead of generating one.
     launcher: The container_image launcher to set.
     launcher_args: The args for the container_image launcher.
@@ -170,6 +172,7 @@ def nodejs_image(
     app_layer(
         name = name,
         base = npm_deps_layer_name,
+        env = env,
         binary = binary,
         visibility = visibility,
         tags = tags,
